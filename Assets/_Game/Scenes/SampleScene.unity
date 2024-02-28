@@ -709,6 +709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2205333868674647668, guid: 559c3649ca170fa4387c9f0273d5464f, type: 3}
+      propertyPath: speed
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 2205333868674647669, guid: 559c3649ca170fa4387c9f0273d5464f, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1522,6 +1526,10 @@ PrefabInstance:
     - target: {fileID: 7749440137033239828, guid: acf55b1864d5f424e92524a9e5aa7a17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749440137033239829, guid: acf55b1864d5f424e92524a9e5aa7a17, type: 3}
+      propertyPath: sprites.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7749440137033239830, guid: acf55b1864d5f424e92524a9e5aa7a17, type: 3}
       propertyPath: m_Name
