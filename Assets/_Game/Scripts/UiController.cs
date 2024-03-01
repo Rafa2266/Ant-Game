@@ -8,6 +8,7 @@ public class UiController : MonoBehaviour
 {
     // Start is called before the first frame update
     public TMP_Text textScore;
+    public Image[] imgLifes;
     void Start()
     {
         
