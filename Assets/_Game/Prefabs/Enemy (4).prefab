@@ -222,6 +222,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 0}
   - {fileID: 0}
+  score: 0
 --- !u!61 &1366162114678895578
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.39981025, y: 1.0123565}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 50
 --- !u!95 &4965040240512235331
 Animator:
   serializedVersion: 5
