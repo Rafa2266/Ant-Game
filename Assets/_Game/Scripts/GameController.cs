@@ -8,17 +8,30 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]public int totalScore;
     [HideInInspector] public int enemyCount;
+    private UiController uiController;
+    public Transform allEnemiesParent;
 
     // Start is called before the first frame update
     void Start()
     {
         totalScore= 0;
         enemyCount= 0;
+        uiController = FindObjectOfType<UiController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void Restart()
+    {
+        totalScore= 0;
+        enemyCount= 0;
+        uiController.textScore.text = totalScore.ToString();
+        foreach(Transform child in allEnemiesParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
