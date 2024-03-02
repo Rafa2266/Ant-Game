@@ -20,7 +20,6 @@ public class Destroyer : MonoBehaviour
             { 
              gameController.enemyCount++;  
              uiController.imgLifes[gameController.enemyCount-1].gameObject.SetActive(false);
-             Debug.Log(target);
             }
             else
             {
