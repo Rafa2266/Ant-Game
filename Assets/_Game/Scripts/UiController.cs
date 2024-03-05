@@ -9,10 +9,11 @@ public class UiController : MonoBehaviour
     // Start is called before the first frame update
     public TMP_Text textScore;
     public Image[] imgLifes;
-    public GameObject panelGame, panelPause, allLifesParent;
+    public GameObject panelGame, panelPause,panelMainMenu, allLifesParent;
     private GameController gameController;
     void Start()
     {
+        panelMainMenu.SetActive(true);
         panelPause.SetActive(false);
         panelGame.SetActive(true);
         gameController = FindObjectOfType<GameController>();
@@ -30,9 +31,22 @@ public class UiController : MonoBehaviour
 
     public void ButtonPause()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 0f;   
         panelGame.SetActive(false);
         panelPause.SetActive(true);
+    }
+    public void ButtonStart()
+    {
+        Time.timeScale = 1f;
+        panelGame.SetActive(true);
+        panelMainMenu.SetActive(false);
+        gameController.StartGame();
+
+    }
+    public void ButtonExit()
+    {
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        activity.Call<bool>("moveTaskToBack", true);
     }
 
     public void ButtonResume()
@@ -57,8 +71,15 @@ public class UiController : MonoBehaviour
 
     public void ButtonBackMainMenu()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
+        panelMainMenu.SetActive(true);
         panelGame.SetActive(false);
         panelPause.SetActive(false);
+        gameController.Restart();
+        foreach (Transform child in allLifesParent.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+
     }
 }
