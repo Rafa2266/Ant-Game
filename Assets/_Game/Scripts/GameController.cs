@@ -11,19 +11,22 @@ public class GameController : MonoBehaviour
     private UiController uiController;
     public Transform allEnemiesParent;
     private Spawner spawner;
+    public int highScore;
 
 
     private void Awake()
     {
         uiController = FindObjectOfType<UiController>();
         spawner = FindObjectOfType<Spawner>();
+        highScore = GetHighScore();
     }
     // Start is called before the first frame update
     void Start()
     {
         totalScore= 0;
         enemyCount= 0;
-        spawner.gameObject.GetComponent<Spawner>().enabled = false ;
+        spawner.gameObject.GetComponent<Spawner>().enabled = false;
+        
         
     }
 
@@ -50,5 +53,19 @@ public class GameController : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+    public void SaveHighScore()
+    {
+        if (highScore < totalScore)
+        {
+            PlayerPrefs.SetInt("highscore", totalScore);
+            uiController.textHighScore.text = "HighScore: "+totalScore.ToString();
+        }
+    }
+
+    public int GetHighScore()
+    {
+        highScore = PlayerPrefs.GetInt("highscore");
+        return highScore;
     }
 }

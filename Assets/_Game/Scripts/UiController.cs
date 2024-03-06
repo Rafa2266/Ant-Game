@@ -7,7 +7,7 @@ using TMPro;
 public class UiController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public TMP_Text textScore;
+    public TMP_Text textScore, textHighScore;
     public Image[] imgLifes;
     public GameObject panelGame, panelPause,panelMainMenu, allLifesParent;
     private GameController gameController;
@@ -17,6 +17,7 @@ public class UiController : MonoBehaviour
         panelPause.SetActive(false);
         panelGame.SetActive(true);
         gameController = FindObjectOfType<GameController>();
+        textHighScore.text= "HighScore: "+gameController.highScore;
     }
 
     // Update is called once per frame
