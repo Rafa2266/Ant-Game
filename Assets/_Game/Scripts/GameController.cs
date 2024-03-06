@@ -6,12 +6,11 @@ public class GameController : MonoBehaviour
 {
     public AudioClip[] audioEnemies;
 
-    [HideInInspector]public int totalScore;
-    [HideInInspector] public int enemyCount;
+    [HideInInspector]public int totalScore, highScore, enemyCount;
     private UiController uiController;
     public Transform allEnemiesParent;
     private Spawner spawner;
-    public int highScore;
+    [SerializeField]private AudioSource music;
 
 
     private void Awake()
@@ -26,14 +25,31 @@ public class GameController : MonoBehaviour
         totalScore= 0;
         enemyCount= 0;
         spawner.gameObject.GetComponent<Spawner>().enabled = false;
+        music.volume = 0.3f;
         
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DestroyEnemy(Collider2D target)
     {
-        
+        enemyCount++;
+        if (enemyCount < 5)
+        {
+            uiController.imgLifes[enemyCount - 1].gameObject.SetActive(false);
+        }
+        else
+        {
+            uiController.imgLifes[enemyCount - 1].gameObject.SetActive(false);
+            SaveHighScore();
+            uiController.textFinalScore.text = "Score: " + totalScore;
+            uiController.GameOver();
+        }
+
+        Destroy(target.gameObject);
+    }
+    public void backVolume()
+    {
+        music.volume = 0.3f;
     }
 
     public void StartGame()
@@ -42,6 +58,7 @@ public class GameController : MonoBehaviour
         enemyCount = 0;
         uiController.textScore.text=totalScore.ToString();
         spawner.gameObject.GetComponent<Spawner>().enabled = true;
+        music.volume = 0.1f;
 
     }
     public void Restart()
