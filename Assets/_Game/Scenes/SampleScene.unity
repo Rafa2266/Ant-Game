@@ -2250,6 +2250,7 @@ MonoBehaviour:
   totalScore: 0
   enemyCount: 0
   allEnemiesParent: {fileID: 1526479720}
+  highScore: 0
 --- !u!4 &1271216623
 Transform:
   m_ObjectHideFlags: 0
@@ -3001,7 +3002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistance: 0.5
   maxDistance: -0.5
-  spawnTime: 3
+  spawnTime: 1
   enemies:
   - {fileID: 2205333868674647674, guid: 559c3649ca170fa4387c9f0273d5464f, type: 3}
   - {fileID: 7749440137033239830, guid: acf55b1864d5f424e92524a9e5aa7a17, type: 3}
